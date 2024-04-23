@@ -113,45 +113,10 @@ public class MyFillter implements Filter {
                 // Người dùng chưa đăng nhập và cố gắng truy cập
                 res.sendRedirect(req.getContextPath() + "/Home");
             }
-//        } else {
-//            Accounts a = (Accounts) ses.getAttribute("user");
-//            if (a.getIsAdmin() == 1) {
-//                // Admin
-//                if (!url.contains("/Admin")) {
-//                    res.sendRedirect(req.getContextPath() + "/Admin/ManagerProduct");
-//                } else {
-//                    chain.doFilter(request, response);
-//                }
-//            } else if (a.getIsAdmin() == 0) {
-//                // Khách
-//                if (url.contains("/ManagerProduct")) {
-//                    res.sendRedirect(req.getContextPath() + "/Member/Home");
-//                } else {
-//                    chain.doFilter(request, response);
-//                }
-//            } else {
-//                // Người xem (không phải Admin hoặc Khách)
-//                chain.doFilter(request, response);
-//            }
-//        }
-
             //==============================================//
-//        if (ses.getAttribute("account") == null) {
-//            // If user is not logged in, allow access to non-restricted pages
-//            if (!url.contains("/Admin") && !url.contains("/Member")) {
-//                chain.doFilter(request, response);
-//            } else {
-//                // If user is not logged in and tries to access restricted pages, redirect to login
-//                res.sendRedirect(req.getContextPath() + "/Login");
-//            }
         } else {
-//            Accounts a = (Accounts) ses.getAttribute("user");
             if (a.getIsAdmin() == 1) {
-//                if (!url.contains("/Admin") ) {
-//                    res.sendRedirect(req.getContextPath() + "/Admin/ManagerProduct");
-//                } else {
                 chain.doFilter(request, response);
-//                }
             } else {
                 if (a.getIsAdmin() == 0) {
                     if (url.contains("Admin")) {
@@ -169,37 +134,6 @@ public class MyFillter implements Filter {
                 }
             }
         }
-//        if (ses.getAttribute("account") == null) {
-//
-//            // If user is not logged in, allow access to non-restricted pages
-//            if (!url.contains("/admin") && !url.contains("/poster")) {
-//                chain.doFilter(request, response);
-//            } else {
-//                // If user is not logged in and tries to access restricted pages, redirect to login
-//                res.sendRedirect(req.getContextPath() + "/login");
-//            }
-//        } else {
-//            Users u = (Users) ses.getAttribute("account");
-//            if (u.getRole_id() == 1) {
-//                chain.doFilter(request, response);
-//            } else {
-//                if (u.getRole_id()== 3) {
-//                    if (url.contains("admin")) {
-//                        res.sendRedirect(req.getContextPath() + "/poster/posterMovie");
-//                    } else {
-//                        chain.doFilter(request, response);
-//                    }
-//
-//                } else if (u.getRole_id()== 2) {
-//                    if (url.contains("admin") || url.contains("member")) {
-//                        res.sendRedirect(req.getContextPath() + "/home");
-//                    } else {
-//                        chain.doFilter(request, response);
-//                    }
-//
-//                }
-//            }
-//        }
     }
 
     /**
